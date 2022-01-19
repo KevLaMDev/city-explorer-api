@@ -26,10 +26,9 @@ app.get('/test', (request, response) => {
 app.get('/weather', (request, response) => {
   let city = request.query.city;
   city.toLowerCase();
-  let cityObj = weatherData.filter(obj => obj.city_name.toLowerCase() === city)
-  //forecasts is an array of objs, datetime is a prop on each obj
-  let dayArr = cityObj.data
-  let weatherCityData = cityObj.data.map(obj => new Forecast(obj))
+  let cityArr = weatherData.filter(obj => obj.city_name.toLowerCase() === city)
+  let daysArr = cityArr[0].data;
+  let weatherCityData = daysArr.map(obj => new Forecast(obj))
   response.send(weatherCityData);
 })
 
