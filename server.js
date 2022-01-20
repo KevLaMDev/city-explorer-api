@@ -16,9 +16,8 @@ require('dotenv').config();
   // use the port we want locally, and make it deployable
 const PORT = process.env.PORT || 3002;
   //import cors
-var cors = require('cors');
+const cors = require('cors');
   // invoke cors
-app.use(cors())
 
 // make server listen to requests
 app.listen(PORT, () => console.log('server standing by'))
