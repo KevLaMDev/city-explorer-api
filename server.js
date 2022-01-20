@@ -12,7 +12,7 @@ const app = express();
 
 // middleware here to be added after app has been instantiated
 require('dotenv').config();
-const axious = require('axios')
+const axios = require('axios')
   // use the port we want locally, and make it deployable
 const PORT = process.env.PORT || 3002;
   //import cors
@@ -21,32 +21,38 @@ var cors = require('cors');
 app.use(cors())
 
 // make server listen to requests
-app.listen(PORT, () => console.log('server standing by'))
+app.listen(PORT, () => console.log(`server standing by on ${PORT}`))
 
 // route handlers
-  // test route 
-app.get('/test', (request, response) => {
-  let name = request.query.name
-  response.send(`yerrrrrr ${name}`)
-  // access query params using request obj
-  // request.query.<param-name>
-});
+app.get('/weather', getWeather);
+app.get('/test', getTest);
+app.get('/movies', getMovies);
 
-app.get('/weather', async (request, response) => {
+getTest = async (request, response) => {
+  response.send('hi this is the server')
+}
+
+getWeather = async (request, response) => {
   let lat = request.query.lat;
   let lon = request.query.lon;
-  let weatherUrl = `https://api.weatherbit.io/v2.0/current?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`
+  let weatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`
   let weatherData = await axios.get(weatherUrl);
-  
-  response.send(weatherData);
-});
+  weatherData = weatherData.data;
+  let groomedWeatherData = weatherData.data.map(obj => new Forecast(obj));
+  response.send(groomedWeatherData);
+};
+
+getMovies = async (request, response) => {
+  let movieSearch = response.query.movieSearch;
+  let movieDbUrl = `https://api.themoviedb.org/3/movie/550?api_key=${process.env.MOVIE_API_KEY}`
+}
+
 
 class Forecast {
   constructor(obj) {
     this.description = obj.weather.description;
     this.date = obj.datetime;
-    this.lowTemp = obj.low_temp;
-    this.maxTemp = obj.max_temp;
+    this.temp = obj.temp;
   };
 };
 
