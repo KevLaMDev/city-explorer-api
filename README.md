@@ -19,12 +19,32 @@ In city-explorer-api, I create a server using node.js that handles requests and 
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-Name of feature: 
+Name of feature: path for weather
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 10 mins
 
-Start time: 
+Start time: 10:00pm
 
-Finish time: 
+Finish time: 10:10pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 10 mins
+
+Name of feature: data processing functionality
+
+Estimate of time needed to complete: 20 mins
+
+Start time: 10:10pm
+
+Finish time: 10:30
+
+Actual time needed to complete: 20 mins
+
+Name of feature: constructor func for groomed data
+
+Estimate of time needed to complete: 30 mins
+
+Start time: 11:00pm
+
+Finish time: 11:30pm
+
+Actual time needed to complete: 30 mins
