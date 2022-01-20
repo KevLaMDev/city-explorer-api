@@ -24,25 +24,29 @@ app.use(cors())
 app.listen(PORT, () => console.log(`server standing by on ${PORT}`))
 
 // route handlers
-  // test route 
-app.get('/test', (request, response) => {
-  let name = request.query.name
-  response.send(`yerrrrrr ${name}`)
-  // access query params using request obj
-  // request.query.<param-name>
-});
+app.get('/weather', getWeather);
+app.get('/test', getTest);
+app.get('/movies', getMovies);
 
-app.get('/weather', async (request, response) => {
-  let lat = 47.60621
-  // request.query.lat;
-  let lon = -122.33207
-  // request.query.lon;
-  let weatherUrl = `https://api.weatherbit.io/v2.0/current?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`
+getTest = async (request, response) => {
+  response.send('hi this is the server')
+}
+
+getWeather = async (request, response) => {
+  let lat = request.query.lat;
+  let lon = request.query.lon;
+  let weatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}`
   let weatherData = await axios.get(weatherUrl);
   weatherData = weatherData.data;
   let groomedWeatherData = weatherData.data.map(obj => new Forecast(obj));
   response.send(groomedWeatherData);
-});
+};
+
+getMovies = async (request, response) => {
+  let movieSearch = response.query.movieSearch;
+  let movieDbUrl = `https://api.themoviedb.org/3/movie/550?api_key=${process.env.MOVIE_API_KEY}`
+}
+
 
 class Forecast {
   constructor(obj) {
