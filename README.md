@@ -14,6 +14,7 @@ In city-explorer-api, I create a server using node.js that handles requests and 
 
 1/19 ![image](301lab8.png)
 
+1.20 ![image](301lab9.png)
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
@@ -48,5 +49,15 @@ Estimate of time needed to complete: 30 mins
 Start time: 11:00pm
 
 Finish time: 11:30pm
+
+Actual time needed to complete: 30 mins
+
+Name of feature: Added request and response for Movie data via API and created constructor func for data processing
+
+Estimate of time needed to complete: 30 mins
+
+Start time: 6:50pm
+
+Finish time: 7:200pm
 
 Actual time needed to complete: 30 mins
