@@ -61,3 +61,14 @@ Start time: 6:50pm
 Finish time: 7:200pm
 
 Actual time needed to complete: 30 mins
+
+Name of feature: Implemented cache functionality and conditional API calls
+
+Estimate of time needed to complete: 30 mins
+
+Start time: 5:30pm
+
+Finish time: 5:50pm
+
+Actual time needed to complete: 20 mins
+
