@@ -25,7 +25,7 @@ async function getWeather (request, response) {
 }
 
 function parseWeather(weatherData) {
-    console.log(weatherData)
+    // console.log(weatherData)
     const weatherSummaries = weatherData.data.data.map(day => {
       return new Weather(day);
     });
